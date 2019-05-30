@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header v-on:createTodo="createTodo"/>
-    <Todos :todos="todos"/>
+    <Todos :todos="todos" v-on:removeTodo="removeTodo"/>
   </div>
 </template>
 
@@ -55,7 +55,10 @@ export default {
         name: todo,
         done: false
       };
-      todos.push(todoObject);
+      this.todos.push(todoObject);
+    },
+    removeTodo: function(id) {
+      this.todos = this.todos.filter(todo => todo.id != id);
     }
   }
 };
