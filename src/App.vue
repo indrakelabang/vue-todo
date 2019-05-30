@@ -1,28 +1,62 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header/>
+    <Todos :todos="todos"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/Header";
+import Todos from "./components/Todos";
+
+let todos = [
+  {
+    id: "1",
+    name: "Test 1",
+    done: false
+  },
+  {
+    id: "2",
+    name: "Test 2",
+    done: false
+  },
+  {
+    id: "3",
+    name: "Test 3",
+    done: false
+  },
+  {
+    id: "4",
+    name: "Test 4",
+    done: false
+  },
+  {
+    id: "5",
+    name: "Test 5",
+    done: false
+  }
+];
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    Header,
+    Todos
+  },
+  data: function() {
+    return {
+      todos: todos
+    };
   }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f3f3f3;
+
+  font-family: Arial, Helvetica, sans-serif;
 }
 </style>
