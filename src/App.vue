@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header v-on:createTodo="createTodo"/>
     <Todos :todos="todos"/>
   </div>
 </template>
@@ -47,6 +47,16 @@ export default {
     return {
       todos: todos
     };
+  },
+  methods: {
+    createTodo: function(todo) {
+      let todoObject = {
+        id: Math.floor(Math.random() * 1000000),
+        name: todo,
+        done: false
+      };
+      todos.push(todoObject);
+    }
   }
 };
 </script>

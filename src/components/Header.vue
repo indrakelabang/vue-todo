@@ -1,13 +1,24 @@
 <template>
   <header>
-    <input type="text" name="todoInput" id="todoInput" placeholder="What's the plan,bruh ?">
-    <button class="submit" id="createTodo">+</button>
+    <input type="text" name="todoInput" v-model="todoValue" placeholder="What's the plan,bruh ?">
+    <button class="submit" v-on:click="createTodo">+</button>
   </header>
 </template>
 
 <script>
 export default {
-  name: "Header"
+  name: "Header",
+  data: function() {
+    return {
+      todoValue: ""
+    };
+  },
+  methods: {
+    createTodo: function() {
+      this.$emit("createTodo", this.todoValue);
+      this.todoValue = "";
+    }
+  }
 };
 </script>
 
